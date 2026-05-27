@@ -2,74 +2,68 @@
 <html lang="en">
 <head>
   <title>Pace Your Therapy | Therapy at Your Pace</title>
-  <meta name="description" content="Supportive therapy for anxiety, burnout, ADHD, emotional overwhelm, and life transitions. Request a consultation with Pace Your Therapy." />
+  <meta name="description" content="Supportive, affirming therapy for anxiety, burnout, ADHD, emotional overwhelm, life transitions, and personal growth." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
     :root {
-      --cream: #f7f3ec;
-      --warm-white: #fffaf3;
-      --sage: #8fa894;
-      --sage-dark: #526b57;
-      --clay: #c79f7b;
-      --text: #2f332f;
-      --muted: #6f756d;
-      --border: #e5dccf;
+      --cream: #f7f1e8;
+      --paper: #fffaf2;
+      --sage: #7f9b83;
+      --sage-dark: #405c46;
+      --clay: #c59a78;
+      --lavender: #c9bddf;
+      --text: #2d332f;
+      --muted: #667064;
+      --border: #e6dacb;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
       color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(143, 168, 148, 0.28), transparent 34%),
-        radial-gradient(circle at top right, rgba(199, 159, 123, 0.24), transparent 30%),
-        linear-gradient(180deg, var(--cream), #f9f6ef);
+      background: var(--cream);
       line-height: 1.7;
     }
 
     header {
       position: sticky;
       top: 0;
-      z-index: 10;
-      background: rgba(255, 250, 243, 0.86);
-      backdrop-filter: blur(12px);
+      z-index: 20;
+      background: rgba(255, 250, 242, 0.86);
+      backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
     }
 
     .nav {
-      max-width: 1100px;
+      max-width: 1180px;
       margin: auto;
-      padding: 18px 22px;
+      padding: 18px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 24px;
     }
 
     .brand {
       font-size: 24px;
       font-weight: bold;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.04em;
     }
 
     .tagline {
-      font-size: 14px;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
       color: var(--muted);
-      margin-top: -4px;
+      margin-top: -3px;
     }
 
     nav {
       display: flex;
-      gap: 22px;
+      gap: 24px;
       font-family: Arial, sans-serif;
       font-size: 14px;
     }
@@ -79,22 +73,23 @@
       text-decoration: none;
     }
 
-    nav a:hover {
-      color: var(--sage-dark);
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 72px 22px;
-    }
+    nav a:hover { color: var(--sage-dark); }
 
     .hero {
+      min-height: 82vh;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 56px;
-      align-items: center;
-      min-height: 74vh;
+      grid-template-columns: 1fr 1fr;
+      background:
+        linear-gradient(90deg, rgba(247,241,232,0.98) 0%, rgba(247,241,232,0.9) 42%, rgba(247,241,232,0.18) 100%),
+        url("https://images.unsplash.com/photo-1604881991720-f91add269bed?auto=format&fit=crop&w=1800&q=80");
+      background-size: cover;
+      background-position: center right;
+    }
+
+    .hero-content {
+      max-width: 620px;
+      padding: 110px 24px 90px;
+      margin-left: max(24px, calc((100vw - 1180px) / 2));
     }
 
     .eyebrow {
@@ -103,37 +98,35 @@
       letter-spacing: 0.22em;
       font-size: 12px;
       color: var(--sage-dark);
-      margin-bottom: 20px;
       font-weight: bold;
+      margin-bottom: 20px;
     }
 
     h1 {
-      font-size: clamp(46px, 7vw, 78px);
-      line-height: 0.98;
-      letter-spacing: -0.06em;
-      margin: 0 0 24px;
+      font-size: clamp(50px, 7vw, 88px);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+      margin: 0 0 26px;
     }
 
     h2 {
-      font-size: clamp(32px, 4vw, 48px);
-      line-height: 1.08;
-      letter-spacing: -0.045em;
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -0.05em;
       margin: 0 0 20px;
     }
 
     h3 {
-      font-size: 24px;
+      font-size: 25px;
       margin: 0 0 12px;
     }
 
-    p {
-      margin: 0 0 18px;
-    }
+    p { margin: 0 0 18px; }
 
     .lead {
       font-size: 21px;
       color: var(--muted);
-      max-width: 640px;
+      max-width: 560px;
     }
 
     .buttons {
@@ -153,14 +146,14 @@
       transition: 0.2s ease;
     }
 
-    .button.primary {
+    .primary {
       background: var(--sage-dark);
       color: white;
     }
 
-    .button.secondary {
+    .secondary {
+      background: rgba(255, 250, 242, 0.75);
       border: 1px solid var(--border);
-      background: rgba(255,255,255,0.55);
       color: var(--text);
     }
 
@@ -169,57 +162,60 @@
       opacity: 0.92;
     }
 
-    .hero-card {
-      background: rgba(255, 250, 243, 0.82);
+    .affirming-note {
+      margin-top: 34px;
+      max-width: 520px;
+      background: rgba(255, 250, 242, 0.78);
       border: 1px solid var(--border);
-      border-radius: 36px;
-      padding: 28px;
-      box-shadow: 0 24px 70px rgba(82, 107, 87, 0.14);
-    }
-
-    .photo-placeholder {
-      min-height: 360px;
-      border-radius: 28px;
-    background:
-  linear-gradient(rgba(82, 107, 87, 0.25), rgba(82, 107, 87, 0.14)),
-  url("https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80");
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      align-items: flex-end;
-      padding: 24px;
-      color: white;
-      overflow: hidden;
-    }
-
-    .photo-note {
-      background: rgba(47, 51, 47, 0.58);
-      backdrop-filter: blur(8px);
-      padding: 16px;
-      border-radius: 20px;
+      border-left: 6px solid var(--lavender);
+      border-radius: 24px;
+      padding: 20px;
       font-family: Arial, sans-serif;
-      font-size: 14px;
+      color: var(--muted);
+      box-shadow: 0 18px 50px rgba(64, 92, 70, 0.1);
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: auto;
+      padding: 82px 24px;
+    }
+
+    .soft-band {
+      background:
+        radial-gradient(circle at top left, rgba(127,155,131,0.18), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(201,189,223,0.18), transparent 30%),
+        var(--paper);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 48px;
+      align-items: start;
     }
 
     .section-intro {
-      max-width: 760px;
-      margin-bottom: 36px;
-      color: var(--muted);
       font-size: 19px;
+      color: var(--muted);
+      max-width: 760px;
+      margin-bottom: 34px;
     }
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 22px;
     }
 
     .card {
-      background: rgba(255, 250, 243, 0.82);
+      background: rgba(255, 250, 242, 0.86);
       border: 1px solid var(--border);
-      border-radius: 30px;
+      border-radius: 32px;
       padding: 30px;
-      box-shadow: 0 18px 50px rgba(82, 107, 87, 0.08);
+      box-shadow: 0 18px 54px rgba(64, 92, 70, 0.08);
     }
 
     .card p,
@@ -229,77 +225,72 @@
     }
 
     ul {
-      padding-left: 20px;
       margin-top: 0;
+      padding-left: 20px;
     }
 
-    .split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 26px;
-    }
-
-    .soft-band {
-      background: rgba(255, 250, 243, 0.58);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+    .inclusive-strip {
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #e57373, #f0b75d, #f4dd74, #7fbf7f, #6fa8dc, #b695d6);
+      margin-bottom: 22px;
+      opacity: 0.82;
     }
 
     .contact-box {
-      max-width: 760px;
+      max-width: 780px;
       margin: auto;
       text-align: center;
-      background: rgba(255, 250, 243, 0.88);
+      background: rgba(255, 250, 242, 0.92);
       border: 1px solid var(--border);
-      border-radius: 36px;
-      padding: 44px;
-      box-shadow: 0 24px 70px rgba(82, 107, 87, 0.12);
+      border-radius: 38px;
+      padding: 48px;
+      box-shadow: 0 24px 70px rgba(64, 92, 70, 0.12);
     }
 
     .small {
       font-family: Arial, sans-serif;
       font-size: 14px;
       color: var(--muted);
+      margin-top: 22px;
     }
 
     footer {
+      background: rgba(255, 250, 242, 0.78);
       border-top: 1px solid var(--border);
-      padding: 36px 22px;
       text-align: center;
-      color: var(--muted);
+      padding: 34px 20px;
       font-family: Arial, sans-serif;
-      background: rgba(255, 250, 243, 0.72);
+      color: var(--muted);
     }
 
-    @media (max-width: 800px) {
-      nav {
-        display: none;
-      }
-
-      .hero,
-      .split {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 850px) {
+      nav { display: none; }
 
       .hero {
-        min-height: auto;
-        padding-top: 40px;
+        grid-template-columns: 1fr;
+        background:
+          linear-gradient(180deg, rgba(247,241,232,0.98) 0%, rgba(247,241,232,0.84) 55%, rgba(247,241,232,0.2) 100%),
+          url("https://images.unsplash.com/photo-1604881991720-f91add269bed?auto=format&fit=crop&w=1400&q=80");
+        background-position: center bottom;
       }
 
+      .hero-content {
+        margin: 0;
+        padding: 76px 22px 360px;
+      }
+
+      .split,
       .cards {
         grid-template-columns: 1fr;
       }
 
       .container {
-        padding: 54px 18px;
-      }
-
-      .photo-placeholder {
-        min-height: 300px;
+        padding: 60px 20px;
       }
 
       .contact-box {
-        padding: 30px 22px;
+        padding: 32px 22px;
       }
     }
   </style>
@@ -324,15 +315,15 @@
 </header>
 
 <main>
-  <section class="container hero">
-    <div>
+  <section class="hero">
+    <div class="hero-content">
       <div class="eyebrow">Individual therapy • New Jersey</div>
 
       <h1>Therapy at your pace.</h1>
 
       <p class="lead">
-        Supportive therapy for anxiety, burnout, ADHD, emotional overwhelm,
-        life transitions, and personal growth.
+        Supportive, affirming therapy for anxiety, burnout, ADHD, emotional
+        overwhelm, life transitions, and personal growth.
       </p>
 
       <div class="buttons">
@@ -344,14 +335,10 @@
           View Insurance Options
         </a>
       </div>
-    </div>
 
-    <div class="hero-card">
-      <div class="photo-placeholder">
-        <div class="photo-note">
-          A calm space for reflection, support, and sustainable change.
-          Your professional photo can go here later.
-        </div>
+      <div class="affirming-note">
+        An inclusive and welcoming space where your identity, pace, and lived
+        experience are respected.
       </div>
     </div>
   </section>
@@ -373,6 +360,11 @@
         <p>
           My approach is collaborative and practical, while still creating room
           for reflection, insight, and meaningful emotional change.
+        </p>
+
+        <p>
+          This practice is affirming of LGBTQIA+ clients and welcomes people from
+          diverse identities, backgrounds, and lived experiences.
         </p>
       </div>
     </div>
@@ -413,7 +405,7 @@
       </div>
 
       <div class="card">
-        <h3>Personal Growth</h3>
+        <h3>Identity & Personal Growth</h3>
         <p>
           A supportive space to build self-awareness, boundaries, confidence,
           and a healthier relationship with yourself.
@@ -425,10 +417,11 @@
   <section id="insurance" class="soft-band">
     <div class="container">
       <div class="eyebrow">Insurance & Payment</div>
-      <h2>Payment options are kept clear and straightforward.</h2>
+      <h2>Clear options for therapy access.</h2>
 
       <div class="cards">
         <div class="card">
+          <div class="inclusive-strip"></div>
           <h3>Accepted Options</h3>
           <ul>
             <li>Aetna</li>
