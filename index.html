@@ -1,62 +1,306 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Pace Your Therapy</title>
+  <title>Pace Your Therapy | Therapy at Your Pace</title>
+  <meta name="description" content="Supportive therapy for anxiety, burnout, ADHD, emotional overwhelm, and life transitions. Request a consultation with Pace Your Therapy." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
- 
+
   <style>
+    :root {
+      --cream: #f7f3ec;
+      --warm-white: #fffaf3;
+      --sage: #8fa894;
+      --sage-dark: #526b57;
+      --clay: #c79f7b;
+      --text: #2f332f;
+      --muted: #6f756d;
+      --border: #e5dccf;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      background: #f8f6f2;
-      color: #333;
-      line-height: 1.6;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(143, 168, 148, 0.28), transparent 34%),
+        radial-gradient(circle at top right, rgba(199, 159, 123, 0.24), transparent 30%),
+        linear-gradient(180deg, var(--cream), #f9f6ef);
+      line-height: 1.7;
     }
 
     header {
-      background: white;
-      padding: 20px;
-      border-bottom: 1px solid #ddd;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 250, 243, 0.86);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: auto;
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: -0.03em;
+    }
+
+    .tagline {
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: -4px;
+    }
+
+    nav {
+      display: flex;
+      gap: 22px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: var(--sage-dark);
     }
 
     .container {
-      max-width: 900px;
+      max-width: 1100px;
       margin: auto;
-      padding: 40px 20px;
+      padding: 72px 22px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: center;
+      min-height: 74vh;
+    }
+
+    .eyebrow {
+      font-family: Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-size: 12px;
+      color: var(--sage-dark);
+      margin-bottom: 20px;
+      font-weight: bold;
     }
 
     h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
+      font-size: clamp(46px, 7vw, 78px);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+      margin: 0 0 24px;
     }
 
     h2 {
-      margin-top: 60px;
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+      margin: 0 0 20px;
+    }
+
+    h3 {
+      font-size: 24px;
+      margin: 0 0 12px;
+    }
+
+    p {
+      margin: 0 0 18px;
+    }
+
+    .lead {
+      font-size: 21px;
+      color: var(--muted);
+      max-width: 640px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+      font-family: Arial, sans-serif;
     }
 
     .button {
       display: inline-block;
-      background: black;
-      color: white;
-      padding: 14px 24px;
+      padding: 14px 22px;
+      border-radius: 999px;
       text-decoration: none;
-      border-radius: 12px;
-      margin-top: 20px;
+      font-weight: bold;
+      transition: 0.2s ease;
+    }
+
+    .button.primary {
+      background: var(--sage-dark);
+      color: white;
+    }
+
+    .button.secondary {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.55);
+      color: var(--text);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      opacity: 0.92;
+    }
+
+    .hero-card {
+      background: rgba(255, 250, 243, 0.82);
+      border: 1px solid var(--border);
+      border-radius: 36px;
+      padding: 28px;
+      box-shadow: 0 24px 70px rgba(82, 107, 87, 0.14);
+    }
+
+    .photo-placeholder {
+      min-height: 360px;
+      border-radius: 28px;
+      background:
+        linear-gradient(rgba(82, 107, 87, 0.28), rgba(82, 107, 87, 0.16)),
+        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+      padding: 24px;
+      color: white;
+      overflow: hidden;
+    }
+
+    .photo-note {
+      background: rgba(47, 51, 47, 0.58);
+      backdrop-filter: blur(8px);
+      padding: 16px;
+      border-radius: 20px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+
+    .section-intro {
+      max-width: 760px;
+      margin-bottom: 36px;
+      color: var(--muted);
+      font-size: 19px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
     }
 
     .card {
-      background: white;
-      padding: 24px;
-      border-radius: 18px;
-      margin-top: 20px;
-      border: 1px solid #ddd;
+      background: rgba(255, 250, 243, 0.82);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 30px;
+      box-shadow: 0 18px 50px rgba(82, 107, 87, 0.08);
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-top: 0;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+    }
+
+    .soft-band {
+      background: rgba(255, 250, 243, 0.58);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .contact-box {
+      max-width: 760px;
+      margin: auto;
+      text-align: center;
+      background: rgba(255, 250, 243, 0.88);
+      border: 1px solid var(--border);
+      border-radius: 36px;
+      padding: 44px;
+      box-shadow: 0 24px 70px rgba(82, 107, 87, 0.12);
+    }
+
+    .small {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: var(--muted);
     }
 
     footer {
-      margin-top: 80px;
-      padding: 40px;
+      border-top: 1px solid var(--border);
+      padding: 36px 22px;
       text-align: center;
-      color: #666;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      background: rgba(255, 250, 243, 0.72);
+    }
+
+    @media (max-width: 800px) {
+      nav {
+        display: none;
+      }
+
+      .hero,
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 40px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .container {
+        padding: 54px 18px;
+      }
+
+      .photo-placeholder {
+        min-height: 300px;
+      }
+
+      .contact-box {
+        padding: 30px 22px;
+      }
     }
   </style>
 </head>
@@ -64,60 +308,218 @@
 <body>
 
 <header>
-  <div class="container">
-    <h2>Pace Your Therapy</h2>
+  <div class="nav">
+    <div>
+      <div class="brand">Pace Your Therapy</div>
+      <div class="tagline">Therapy at your pace.</div>
+    </div>
+
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#insurance">Insurance</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </div>
 </header>
 
-<section class="container">
-  <h1>Therapy at your pace.</h1>
+<main>
+  <section class="container hero">
+    <div>
+      <div class="eyebrow">Individual therapy • New Jersey</div>
 
-  <p>
-    Supportive therapy for anxiety, burnout, ADHD, emotional overwhelm,
-    and life transitions.
-  </p>
+      <h1>Therapy at your pace.</h1>
 
-  <a class="button" href="mailto:hello@paceyourtherapy.com">
-    Request a Consultation
-  </a>
+      <p class="lead">
+        Supportive therapy for anxiety, burnout, ADHD, emotional overwhelm,
+        life transitions, and personal growth.
+      </p>
 
-  <div class="card">
-    <h2>About</h2>
+      <div class="buttons">
+        <a class="button primary" href="mailto:hello@paceyourtherapy.com">
+          Request a Consultation
+        </a>
 
-    <p>
-      Therapy should feel collaborative, approachable, and tailored to your goals.
-      Sessions are designed to help clients feel supported while building tools
-      for meaningful and sustainable change.
+        <a class="button secondary" href="#insurance">
+          View Insurance Options
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="photo-placeholder">
+        <div class="photo-note">
+          A calm space for reflection, support, and sustainable change.
+          Your professional photo can go here later.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="soft-band">
+    <div class="container split">
+      <div>
+        <div class="eyebrow">About</div>
+        <h2>A grounded, collaborative approach to therapy.</h2>
+      </div>
+
+      <div>
+        <p>
+          Therapy should feel approachable, supportive, and tailored to your goals.
+          Sessions are designed to help you slow down, make sense of what you are
+          carrying, and build tools that fit your real life.
+        </p>
+
+        <p>
+          My approach is collaborative and practical, while still creating room
+          for reflection, insight, and meaningful emotional change.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="container">
+    <div class="eyebrow">Services</div>
+    <h2>Support for common challenges that affect daily life.</h2>
+
+    <p class="section-intro">
+      Therapy can help you better understand patterns, reduce overwhelm,
+      improve coping, and move toward a more grounded sense of self.
     </p>
-  </div>
 
-  <div class="card">
-    <h2>Insurance & Payment</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Anxiety & Stress</h3>
+        <p>
+          Support for chronic worry, overthinking, panic, perfectionism,
+          stress management, and emotional overwhelm.
+        </p>
+      </div>
 
-    <ul>
-      <li>Aetna</li>
-      <li>Horizon BCBS</li>
-      <li>Independence Blue Cross</li>
-      <li>Cigna</li>
-      <li>Private Pay</li>
-    </ul>
+      <div class="card">
+        <h3>ADHD & Executive Functioning</h3>
+        <p>
+          Strategies for focus, organization, motivation, emotional regulation,
+          and managing the cycle of burnout.
+        </p>
+      </div>
 
-    <p>
-      Additional insurance plans may be available through Grow Therapy.
-    </p>
-  </div>
+      <div class="card">
+        <h3>Burnout & Life Transitions</h3>
+        <p>
+          Guidance through career stress, identity shifts, relationship changes,
+          and moments when life feels difficult to manage.
+        </p>
+      </div>
 
-  <div class="card">
-    <h2>Profiles</h2>
+      <div class="card">
+        <h3>Personal Growth</h3>
+        <p>
+          A supportive space to build self-awareness, boundaries, confidence,
+          and a healthier relationship with yourself.
+        </p>
+      </div>
+    </div>
+  </section>
 
-    <p>
-      Psychology Today and Grow Therapy links coming soon.
-    </p>
-  </div>
-</section>
+  <section id="insurance" class="soft-band">
+    <div class="container">
+      <div class="eyebrow">Insurance & Payment</div>
+      <h2>Payment options are kept clear and straightforward.</h2>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Accepted Options</h3>
+          <ul>
+            <li>Aetna</li>
+            <li>Horizon Blue Cross Blue Shield</li>
+            <li>Independence Blue Cross</li>
+            <li>Cigna</li>
+            <li>Private Pay</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Booking & Availability</h3>
+          <p>
+            Additional insurance plans may be available through Grow Therapy.
+            If online scheduling shows limited availability, you are still
+            welcome to reach out directly regarding consultation requests,
+            future openings, or private-pay options.
+          </p>
+
+          <div class="buttons">
+            <a class="button primary" href="https://growtherapy.com" target="_blank">
+              View Grow Therapy Profile
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="profiles" class="container">
+    <div class="eyebrow">Profiles</div>
+    <h2>Learn more or connect through trusted therapy directories.</h2>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Psychology Today</h3>
+        <p>
+          View my Psychology Today profile for additional background,
+          specialties, and contact information.
+        </p>
+
+        <div class="buttons">
+          <a class="button secondary" href="https://www.psychologytoday.com" target="_blank">
+            Psychology Today Profile
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Grow Therapy</h3>
+        <p>
+          Grow Therapy may offer additional scheduling and insurance options.
+          Availability may vary, so direct inquiries are welcome.
+        </p>
+
+        <div class="buttons">
+          <a class="button secondary" href="https://growtherapy.com" target="_blank">
+            Grow Therapy Profile
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="container">
+    <div class="contact-box">
+      <div class="eyebrow">Contact</div>
+
+      <h2>Request a consultation.</h2>
+
+      <p>
+        Reach out to ask questions, discuss availability, or learn more about
+        beginning therapy.
+      </p>
+
+      <div class="buttons" style="justify-content: center;">
+        <a class="button primary" href="mailto:hello@paceyourtherapy.com">
+          Email hello@paceyourtherapy.com
+        </a>
+      </div>
+
+      <p class="small">
+        Please avoid sending sensitive medical or personal information by email.
+        Responses are typically provided within 1–2 business days.
+      </p>
+    </div>
+  </section>
+</main>
 
 <footer>
-  Pace Your Therapy
+  <p>Pace Your Therapy • Therapy at your pace.</p>
 </footer>
 
 </body>
